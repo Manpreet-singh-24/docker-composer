@@ -23,20 +23,29 @@ const mongoose = require("mongoose");
 (async () => {
   try {
     const options = {
+     // type: 'single',
       useNewUrlParser: true,
+      useUnifiedTopology: true,
     };
 
-    console.log(" ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ block 2");
+    console.log(" ^^^^^^^^^^^^^^^^^^^ block 2 ^^^^^^^^^^^^^^^^^ ");
     const connection = await mongoose.connect(
-      "mongodb://sample_mongo:27017",
+      process.env.MONGO_LINK,
       options
     );
 
+    console.log(" ^^^^^^^^^^^^^^^^^^^ block 333333333333 ^^^^^^^^^^^^^^^^^ ");
+
+    // const connection = await mongoose.connect(
+    //   "mongodb://localhost:27017",
+    //   options
+    // );
+
     if (connection) {
-      console.log("Database Connected Successfully...");
+      console.log(" ****** Database Connected Successfully ********* ");
     }
   } catch (err) {
-    console.log("Error while connecting database\n");
+    console.log(" ******* Error while connecting database\n  ******** ");
     console.log(err);
   }
 })();
